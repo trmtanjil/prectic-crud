@@ -1,10 +1,14 @@
-import React from 'react'
+import React  from 'react'
+import { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
  
 
 function UpdatedUser() {
-    const {_id, name, email,gender,status} = useLoaderData()
+    const {_id, name, email,gender,status } = useLoaderData();
+    
+  const [genderf, setgender] = useState(gender);
+  const [statuss, setstatuss] =useState(status)
     
   
 
@@ -69,70 +73,60 @@ function UpdatedUser() {
             />
           </div>
 
-       <div className="mb-4">
-            <span className="block text-gray-700 text-sm font-bold mb-2">Gender</span>
-            <div className="flex items-center space-x-4">
-              <label className="inline-flex items-center">
-                <input
-                  type="radio"
-                  className="form-radio text-blue-600"
-                  name="gender"
-                  defaultValue={gender}
-                  defaultChecked
-                />
-                <span className="ml-2">Male</span>
-              </label>
-              <label className="inline-flex items-center">
-                <input
-                  type="radio"
-                  className="form-radio text-blue-600"
-                  name="gender"
-                 
-                  defaultValue={gender}
-                />
-                <span className="ml-2">Female</span>
-              </label>
-            </div>
-          </div>
+     <div className="mb-4">
+  <span className="block text-gray-700 text-sm font-bold mb-2">Gender</span>
+  <div className="flex items-center space-x-4">
+    <label className="inline-flex items-center">
+      <input
+        type="radio"
+        className="form-radio text-blue-600"
+        name="gender"
+        value="male"
+        checked={genderf === "male"} // Controlled Input
+        onChange={(e) => setgender(e.target.value)}
+      />
+      <span className="ml-2">Male</span>
+    </label>
+    <label className="inline-flex items-center">
+      <input
+        type="radio"
+        className="form-radio text-blue-600"
+        name="gender"
+        value="female"
+        checked={genderf === "female"} // Controlled Input
+        onChange={(e) => setgender(e.target.value)}
+      />
+      <span className="ml-2">Female</span>
+    </label>
+  </div>
+</div>
 
-          <div className="mb-6">
-            <span className="block text-gray-700 text-sm font-bold mb-2">Status</span>
-            <div className="flex items-center space-x-4">
-              <label className="inline-flex items-center">
-                <input
-                  type="radio"
-                  defaultValue={status}
-                  className="form-radio text-blue-600"
-                  name="status"
-                  
-                  defaultChecked
-                />
-                <span className="ml-2">Active</span>
-              </label>
-              <label className="inline-flex items-center">
-                <input
-                defaultValue={status}
-                  type="radio"
-                  className="form-radio text-blue-600"
-                  name="status"
-                         
-                />
-                <span className="ml-2">Inactive</span>
-              </label>
-            </div>
-          </div>  
-
-          {/* Checkbox for Availability */}
-          {/* <div className="mb-4 flex items-center">
-            <label className="block text-gray-700 text-sm font-bold mb-2 mr-2">
-              Available:
-            </label>
-            <input
-              type="checkbox"
-              checked={isAvailable}
-              onChange={(e) => setIsAvailable(e.target.checked)}
-            />
-          </div> */}
+<div className="mb-4">
+  <span className="block text-gray-700 text-sm font-bold mb-2">Status</span>
+  <div className="flex items-center space-x-4">
+    <label className="inline-flex items-center">
+      <input
+        type="radio"
+        className="form-radio text-blue-600"
+        name="status"
+        value="active"
+        checked={statuss === "active"} // Controlled Input
+        onChange={(e) => setstatuss(e.target.value)}
+      />
+      <span className="ml-2">Active</span>
+    </label>
+    <label className="inline-flex items-center">
+      <input
+        type="radio"
+        className="form-radio text-blue-600"
+        name="status"
+        value="inactive"
+        checked={statuss === "inactive"} // Controlled Input
+        onChange={(e) => setstatuss(e.target.value)}
+      />
+      <span className="ml-2">Inactive</span>
+    </label> </div>
+</div>
 
           <div className="flex items-center justify-center">
             <button
