@@ -9,6 +9,9 @@ import {
 import MainRout from './Root/MainRout.jsx';
 import Home from './Component/Home.jsx';
 import AllUser from './Component/AllUser.jsx';
+import UserAdd from './Component/UserAdd.jsx';
+import UpdatedUser from './Component/UpdatedUser.jsx';
+ 
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,15 @@ const router = createBrowserRouter([
         {
           path:'alluser',
           Component:AllUser,
+        },
+        {
+          path:'adduser',
+          Component:UserAdd,
+        },
+        {
+          path:'updateduser/:id',
+          loader:({params})=>fetch(`http://localhost:5000/users/${params.id}`),
+          Component:UpdatedUser,
         }
     ]
   },
